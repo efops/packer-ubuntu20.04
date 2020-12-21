@@ -1,7 +1,7 @@
 ## Packer config to build Vsphere virtual machines templates from Ubuntu 20.04 live-server ISO file as a source.
 
 I have used `iso_path` variable on ubuntu-20.04.json. But Also I have added `iso_url` variable to variables.json. So If you dont have ready Ubuntu-20.04 live-server then you can basically change `iso_path` variable with `iso_url` in ubuntu-20.04.json.
-On boot command I used my own static server for serving `user-data` and `meta-data` files. If you wish you can keep and use it otherwise in this repo I have also added these files, so you can use them with your own server. 
+On boot command I used my own static server for serving `user-data` and `meta-data` files. If you wish you can keep and use it otherwise in this repo I have also added these files, so you can use them with your own server `http://{{ .HTTPIP }}:{{ .HTTPPort }}/`. 
 I will post detailed documentation about packer and this repo on my website (https://efkan-isazade.com) soon and will explain every single detail there.
 
 ## Run packer build:
