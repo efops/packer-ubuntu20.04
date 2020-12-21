@@ -12,7 +12,7 @@
          "root=/dev/sr0 ",
          "initrd=/casper/initrd ",
          "autoinstall ",
-         "ds=nocloud-net;s=https://ubuntu-cloud-init.vercel.app/",
+         "ds=nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/",
          "<enter>"
       ],
       "boot_wait": "2s",
@@ -24,6 +24,7 @@
       "folder": "{{user `vcenter_folder`}}",
       "guest_os_type": "ubuntu64Guest",
       "host": "{{user `vcenter_host`}}",
+      "http_directory": "{{user `http_directory`}}",
       "insecure_connection": "true",
       "iso_checksum": "{{user `iso_checksum_type`}}:{{user `iso_checksum`}}",
       "iso_paths": "{{user `iso_paths`}}",
