@@ -11,5 +11,5 @@ packer build -on-error=ask -var-file variables.json ubuntu-20.04.json
 
 ## Running packer build with hcl template
 ```bash
-packer build -on-error=ask ubuntu-20.04.pkr.hcl
+packer build -debug -on-error=ask -var-file variables.pkrvars.hcl -var-file vsphere.pkrvars.hcl ubuntu-20.04.pkr.hcl
 ```
