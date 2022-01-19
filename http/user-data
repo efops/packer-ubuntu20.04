@@ -8,6 +8,15 @@ autoinstall:
     keyboard:
         layout: en
         variant: us
+    # general packages needed for machines - referenced from https://tekanaid.com/posts/hashicorp-packer-build-ubuntu20-04-vmware
+    packages: [open-vm-tools, openssh-server, net-tools, perl, open-iscsi, ntp, curl, vim, ifupdown, zip, unzip, gnupg2, software-properties-common, apt-transport-https, ca-certificates, lsb-release, python3-pip, jq]
+    # network setup - referenced from https://tekanaid.com/posts/hashicorp-packer-build-ubuntu20-04-vmware
+    network:
+       network:
+          version: 2
+          ethernets:
+              ens160:
+                  dhcp4: true
     identity:
         hostname: ubuntu-server
         username: ubuntu
@@ -15,17 +24,18 @@ autoinstall:
     ssh:
         install-server: yes
         allow-pw: yes
+        authorized-keys:
+            - 
     storage:
         layout:
-            name: direct
+            name: lvm
     apt:
         primary:
             - arches: [i386, amd64]
-              uri: "http://ro.archive.ubuntu.com/ubuntu/"
+              uri: "http://archive.ubuntu.com/ubuntu/"
     user-data:
       disable_root: false
     late-commands:
-      - sed -i -e 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /target/etc/ssh/sshd_config
       - sed -i -e 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /target/etc/ssh/sshd_config
       - echo 'ubuntu ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/ubuntu
       - curtin in-target --target=/target -- chmod 440 /etc/sudoers.d/ubuntu
