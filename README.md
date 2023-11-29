@@ -16,6 +16,6 @@ packer build -debug -on-error=ask -var-file variables.pkrvars.hcl -var-file vsph
 
 ## Support
 
-If you like it, Click https://www.buymeacoffee.com/efkanisazade
+If you like it, Click [<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="efkanisazade" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>]
 
 Thank you
